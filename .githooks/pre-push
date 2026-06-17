@@ -2,6 +2,20 @@
 
 branch_name="$(git symbolic-ref --quiet --short HEAD 2>/dev/null || true)"
 
+# pre-push receives: <local ref> <local sha> <remote ref> <remote sha>
+# Block any update that targets main/master, regardless of current branch.
+while read -r _local_ref _local_sha remote_ref _remote_sha; do
+  case "$remote_ref" in
+    refs/heads/main|refs/heads/master)
+      target_branch="${remote_ref#refs/heads/}"
+      echo "Push bloqueado: no se permiten pushes directos a la rama $target_branch." >&2
+      echo "Crea una rama de trabajo y abre un Pull Request siguiendo CONTRIBUTING.md." >&2
+      exit 1
+      ;;
+  esac
+done
+
+# Also block simple `git push` when currently on main/master.
 case "$branch_name" in
   main|master)
     echo "Push bloqueado: no se permiten pushes directos a la rama $branch_name." >&2
