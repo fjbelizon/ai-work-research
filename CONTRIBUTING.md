@@ -1,64 +1,64 @@
-# Guía de contribución
+# Contribution Guide
 
-Gracias por contribuir a `ai-work-research`.
+Thank you for contributing to `ai-work-research`.
 
-## Política de ramas
+## Branch policy
 
-- La rama principal de este repositorio es `main`.
-- No se permiten commits ni pushes directos a `main`.
-- Si en el futuro se crea o utiliza una rama `master`, aplicará exactamente la misma regla: tampoco se permiten commits ni pushes directos.
-- Todo cambio debe realizarse en una rama separada creada a partir de la rama principal.
+- The main branch of this repository is `main`.
+- Direct commits and pushes to `main` are not allowed.
+- If a `master` branch is ever created or used in the future, the exact same rule applies: direct commits and pushes are also not allowed.
+- Every change must be made in a separate branch created from the main branch.
 
-## Requisito de issue previo
+## Issue-first requirement
 
-Toda contribución debe estar vinculada a un issue registrado en este repositorio.
+Every contribution must be linked to an issue created in this repository.
 
-- Antes de crear cualquier rama o iniciar cualquier trabajo, comprueba si ya existe un issue que cubra el cambio que deseas hacer.
-- Si no existe, crea el issue primero y espera a que sea aceptado/asignado antes de comenzar.
-- No se aceptarán ramas de trabajo ni pull requests que no estén vinculados a un issue.
-- El nombre de la rama debe incluir el número de issue (por ejemplo, `feature/42-description` o `fix/7-typo`).
+- Before creating any branch or starting any work, check whether an issue already exists for the change you want to make.
+- If no issue exists, create it first and wait until it is accepted/assigned before starting.
+- Work branches and pull requests that are not linked to an issue will not be accepted.
+- The branch name must include the issue number (for example, `feature/42-description` or `fix/7-typo`).
 
-## Flujo obligatorio de contribución
+## Required contribution workflow
 
-1. Abre o identifica el issue que justifica el cambio.
-2. Crea una rama para tu trabajo con el número de issue incluido (`feature/<número>-descripción`, `fix/<número>-descripción`, `docs/<número>-descripción`, etc.).
-3. Realiza tus cambios en esa rama.
-4. Usa commits claros y específicos, con un alcance fácil de revisar.
-5. Abre un Pull Request vinculado al issue (usa `Closes #<número>` o `Fixes #<número>` en la descripción).
-6. Espera la revisión antes de fusionar.
+1. Open or identify the issue that justifies the change.
+2. Create a branch for your work that includes the issue number (`feature/<number>-description`, `fix/<number>-description`, `docs/<number>-description`, etc.).
+3. Make your changes in that branch.
+4. Use clear, specific commits with an easy-to-review scope.
+5. Open a Pull Request linked to the issue (use `Closes #<number>` or `Fixes #<number>` in the description).
+6. Wait for review before merging.
 
-## Requisitos para cada Pull Request
+## Requirements for each Pull Request
 
-Cada Pull Request debe incluir:
+Each Pull Request must include:
 
-- referencia explícita al issue que lo justifica (usa `Closes #<número>` o `Fixes #<número>` en la descripción),
-- una descripción clara del cambio,
-- la motivación o el problema que resuelve (habitualmente cubierta por el propio issue),
-- las validaciones realizadas (por ejemplo, revisión manual, pruebas o verificaciones aplicables),
-- confirmación de que se siguieron estas directrices.
+- an explicit reference to the issue it addresses (use `Closes #<number>` or `Fixes #<number>` in the description),
+- a clear description of the change,
+- the motivation or problem it solves (usually already covered by the issue itself),
+- validations performed (for example, manual review, tests, or other applicable checks),
+- confirmation that these guidelines were followed.
 
-No se fusionará ninguna PR sin un issue vinculado.
+No PR will be merged without a linked issue.
 
-## Buenas prácticas de colaboración
+## Collaboration best practices
 
-- Mantén los commits claros, pequeños y fáciles de revisar.
-- Revisa tu propio cambio antes de solicitar revisión.
-- Evita mezclar cambios no relacionados en la misma PR.
-- Responde a los comentarios de revisión y ajusta la PR cuando sea necesario.
-- Procura mantener una comunicación clara sobre el alcance y el impacto del cambio.
+- Keep commits clear, small, and easy to review.
+- Review your own change before requesting review.
+- Avoid mixing unrelated changes in the same PR.
+- Respond to review comments and update the PR when needed.
+- Keep communication clear about the scope and impact of the change.
 
-## Ayudas locales y protección real de ramas
+## Local safeguards and real branch protection
 
-Este repositorio incluye un hook versionado en `.githooks/pre-push` que ayuda a detectar intentos de push directo a `main` o `master` desde tu entorno local.
+This repository includes a versioned hook at `.githooks/pre-push` that helps detect attempts to push directly to `main` or `master` from your local environment.
 
-Para habilitarlo en tu clon local:
+To enable it in your local clone:
 
 ```bash
 git config core.hooksPath .githooks
 ```
 
-Importante:
+Important:
 
-- este hook es una ayuda local y no sustituye la protección real de ramas,
-- la prevención efectiva de commits o pushes directos debe configurarse en GitHub,
-- configura esa protección en **GitHub Settings → Rules → Rulesets** o en **Branch protection rules** para `main` y también para `master` si esa rama llega a crearse.
+- this hook is a local safeguard and does not replace real branch protection,
+- effective prevention of direct commits or pushes must be configured in GitHub,
+- configure that protection in **GitHub Settings → Rules → Rulesets** or in **Branch protection rules** for `main`, and also for `master` if that branch is ever created.

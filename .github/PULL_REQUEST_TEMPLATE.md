@@ -1,26 +1,26 @@
-## Issue relacionado
+## Related issue
 
-Closes #<!-- número de issue -->
+Closes #<!-- issue number -->
 
-## Resumen del cambio
+## Change summary
 
-<!-- Describe brevemente qué cambia esta PR. -->
+<!-- Briefly describe what this PR changes. -->
 
-## Motivación
+## Motivation
 
-<!-- Explica por qué este cambio es necesario (puede referenciar el issue). -->
+<!-- Explain why this change is needed (you can reference the issue). -->
 
-## Validaciones realizadas
+## Validations performed
 
-<!-- Enumera pruebas, revisiones manuales u otras validaciones aplicables. -->
+<!-- List tests, manual reviews, or other applicable validations. -->
 
 ## Checklist
 
-- [ ] Esta PR está vinculada a un issue (indicado arriba con `Closes #` o `Fixes #`).
-- [ ] Leí y cumplí `CONTRIBUTING.md`.
-- [ ] El nombre de mi rama incluye el número de issue (por ejemplo, `feature/42-descripción`).
-- [ ] Este cambio fue realizado en una rama separada; no proviene de commits directos sobre `main`.
-- [ ] Si existiera o se utilizara `master`, también respetaría la misma política de no hacer commits directos.
-- [ ] La PR describe el cambio, su motivación y las validaciones realizadas.
-- [ ] Revisé mis commits para que sean claros y fáciles de auditar.
-- [ ] Entiendo que la protección real contra pushes directos debe configurarse en GitHub Settings → Rules → Rulesets o Branch protection rules para `main` (y `master` si se crea).
+- [ ] This PR is linked to an issue (indicated above with `Closes #` or `Fixes #`).
+- [ ] I read and followed `CONTRIBUTING.md`.
+- [ ] My branch name includes the issue number (for example, `feature/42-description`).
+- [ ] This change was made in a separate branch; it does not come from direct commits to `main`.
+- [ ] If `master` ever exists or is used, I will follow the same no-direct-commit policy there.
+- [ ] The PR describes the change, its motivation, and the validations performed.
+- [ ] I reviewed my commits to keep them clear and easy to audit.
+- [ ] I understand that real protection against direct pushes must be configured in GitHub Settings → Rules → Rulesets or Branch protection rules for `main` (and `master` if it is created).
