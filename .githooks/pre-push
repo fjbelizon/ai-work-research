@@ -1,0 +1,27 @@
+#!/bin/sh
+
+branch_name="$(git symbolic-ref --quiet --short HEAD 2>/dev/null || true)"
+
+# pre-push receives: <local ref> <local sha> <remote ref> <remote sha>
+# Block any update that targets main/master, regardless of current branch.
+while read -r _local_ref _local_sha remote_ref _remote_sha; do
+  case "$remote_ref" in
+    refs/heads/main|refs/heads/master)
+      target_branch="${remote_ref#refs/heads/}"
+      echo "Push blocked: direct pushes to branch $target_branch are not allowed." >&2
+      echo "Create a working branch and open a Pull Request following CONTRIBUTING.md." >&2
+      exit 1
+      ;;
+  esac
+done
+
+# Also block simple `git push` when currently on main/master.
+case "$branch_name" in
+  main|master)
+    echo "Push blocked: direct pushes to branch $branch_name are not allowed." >&2
+    echo "Create a working branch and open a Pull Request following CONTRIBUTING.md." >&2
+    exit 1
+    ;;
+esac
+
+exit 0

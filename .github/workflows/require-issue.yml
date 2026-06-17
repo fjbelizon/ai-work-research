@@ -1,0 +1,32 @@
+name: Require linked issue
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize, ready_for_review]
+
+jobs:
+  check-linked-issue:
+    name: Check that PR is linked to an issue
+    if: ${{ !github.event.pull_request.draft }}
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    steps:
+      - name: Verify issue reference in PR body
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          if printf '%s' "$PR_BODY" | grep -qiE '(closes|fixes|resolves)[[:space:]]+#[0-9]+'; then
+            echo "✅ PR body contains a valid issue reference."
+          else
+            echo "❌ No linked issue found in PR body."
+            echo ""
+            echo "Every contribution must be linked to a GitHub issue."
+            echo "Add one of the following to your PR description:"
+            echo "  Closes #<issue-number>"
+            echo "  Fixes #<issue-number>"
+            echo "  Resolves #<issue-number>"
+            echo ""
+            echo "See CONTRIBUTING.md for details."
+            exit 1
+          fi
