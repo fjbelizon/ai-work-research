@@ -1,0 +1,13 @@
+{
+  "name": "ai-work-research-marketplace",
+  "owner": {
+    "name": "fjbelizon"
+  },
+  "plugins": [
+    {
+      "name": "ai-research-tools",
+      "source": "./plugins/ai-research-tools",
+      "description": "Agents, skills, and hooks for research on the impact of AI on work"
+    }
+  ]
+}

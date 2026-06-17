@@ -1,0 +1,30 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "type": "command",
+        "matcher": {
+          "tool_name": "editFile",
+          "file_paths": ["**/*.cs", "**/*.csproj", "**/*.razor"]
+        },
+        "command": "dotnet format --include \"$TOOL_INPUT_FILE_PATH\" --verbosity minimal"
+      }
+    ],
+    "PreToolUse": [
+      {
+        "type": "command",
+        "matcher": {
+          "tool_name": "runCommand"
+        },
+        "command": "node -e \"const cmd = JSON.parse(require('fs').readFileSync('/dev/stdin','utf8')).command || ''; const blocked = ['rm -rf','DROP TABLE','DELETE FROM','truncate']; const found = blocked.find(b => cmd.toLowerCase().includes(b.toLowerCase())); process.stdout.write(JSON.stringify(found ? {action:'block', message:'Command blocked by security policy: ' + found} : {action:'allow'}));\"",
+        "timeout": 5000
+      }
+    ],
+    "SessionStart": [
+      {
+        "type": "command",
+        "command": "node -e \"const fs = require('fs'); const csproj = fs.readdirSync('.', {withFileTypes:true}).find(d => d.isFile() && d.name.endsWith('.csproj')); const sln = fs.readdirSync('.', {withFileTypes:true}).find(d => d.isFile() && d.name.endsWith('.sln')); const artifact = (sln && sln.name) || (csproj && csproj.name) || 'N/A'; process.stdout.write(JSON.stringify({context: 'Project: ai-work-research | Stack: C# + Markdown | Primary .NET artifact: ' + artifact}));\""
+      }
+    ]
+  }
+}

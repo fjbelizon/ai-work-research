@@ -1,0 +1,15 @@
+{
+  "name": "ai-research-tools",
+  "description": "Herramientas de personalización para investigación sobre IA en el trabajo",
+  "version": "1.0.0",
+  "author": {
+    "name": "fjbelizon",
+    "email": "fjbelizon@example.com"
+  },
+  "license": "MIT",
+  "keywords": ["research", "ai", "data-analysis", "python"],
+  "agents": "agents/",
+  "skills": ["skills/"],
+  "hooks": "hooks.json",
+  "mcpServers": ".mcp.json"
+}
